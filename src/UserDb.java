@@ -1,2 +1,5 @@
-package PACKAGE_NAME;public class UserDb {
+public class UserDb {
+   public boolean changePassword(String username, String password){
+       return true;
+   }
 }
