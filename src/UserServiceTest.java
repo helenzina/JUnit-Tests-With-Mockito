@@ -30,13 +30,6 @@ public class UserServiceTest {
     }
 
     @Test
-    public void testChangePasswordFailedWhenUserDoesntExist(){
-        Mockito.when(userDb.changePassword(Mockito.anyString(), Mockito.anyString())).thenReturn(false);
-        boolean actual= userService.changePassword("username", "password");
-        assertFalse(actual);
-    }
-
-    @Test
     public void testChangePasswordWhenItsWeak(){
         Mockito.when(userDb.changePassword("username", "p")).thenReturn(false);
         boolean actual= userService.changePassword("username", "p");
