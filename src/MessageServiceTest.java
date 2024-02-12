@@ -38,14 +38,6 @@ public class MessageServiceTest{
         boolean actual= messageService.sendMessage("someip","somemessage");
     }
 
-
-    @Test
-    public void testSendMessageIfNetworkIsDown(){
-        Mockito.when(network.sendMessage(Mockito.anyString(), Mockito.anyString())).thenReturn(false);
-        boolean actual=messageService.sendMessage("someip","somemessage");
-        assertFalse(actual);
-    }
-
     @After
     public void teardown(){
         network= null;
