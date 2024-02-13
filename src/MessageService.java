@@ -7,14 +7,14 @@ public class MessageService{
     }
 
     public boolean sendMessage(String ip, String message){
-        //if(network.sendMessage(ip,message)){
-        //    return true;
-        //}else if (network.sendMessage(ip,message)){
-        //    return true;
-        //}else{
-        //    return false;
-        //}
-        return network.sendMessage(ip, message);
+        if(network.sendMessage(ip,message)){
+            return true;
+        }else if (network.sendMessage(ip,message)){
+           return true;
+        }else{
+            return false;
+        }
+        //return network.sendMessage(ip, message);
     }
 
 }
