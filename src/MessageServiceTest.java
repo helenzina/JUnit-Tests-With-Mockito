@@ -19,23 +19,24 @@ public class MessageServiceTest{
     }
 
     @Test
-    public void testSendMessageSuccess(){
+    public void testSendMessageSuccessFirstTry(){
         Mockito.when(network.sendMessage("someip","somemessage")).thenReturn(true);
         boolean actual=messageService.sendMessage("someip","somemessage");
         assertTrue(actual);
     }
 
     @Test
-    public void testSendMessageFailed(){
-        Mockito.when(network.sendMessage("someip","somemessage")).thenReturn(false);
+    public void testSendMessageSuccessSecondTry(){
+        Mockito.when(network.sendMessage("someip","somemessage")).thenReturn(false, true);
         boolean actual=messageService.sendMessage("someip","somemessage");
-        assertFalse(actual);
+        assertTrue(actual);
     }
 
-    @Test(expected= Exception.class)
-    public void testSendMessageFailedManyTimes(){
-        Mockito.when(network.sendMessage("someip","somemessage")).thenReturn(false, false).thenThrow(Exception.class);
+    @Test
+    public void testSendMessageFailedTwoTimes(){
+        Mockito.when(network.sendMessage("someip","somemessage")).thenReturn(false, false);
         boolean actual= messageService.sendMessage("someip","somemessage");
+        assertFalse(actual);
     }
 
     @After
