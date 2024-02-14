@@ -1,2 +1,9 @@
-package PACKAGE_NAME;public class StringManipulator {
+public class StringManipulator {
+    public static String reverseString(String input) {
+        StringBuilder reversed = new StringBuilder();
+        for (int i = input.length() - 1; i >= 0; i--) {
+            reversed.append(input.charAt(i));
+        }
+        return reversed.toString();
+    }
 }
